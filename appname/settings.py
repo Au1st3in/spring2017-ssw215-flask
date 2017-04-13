@@ -1,10 +1,8 @@
 import tempfile
 db_file = tempfile.NamedTemporaryFile()
 
-
 class Config(object):
     SECRET_KEY = 'REPLACE ME'
-
 
 class ProdConfig(Config):
     ENV = 'prod'
@@ -22,7 +20,6 @@ class DevConfig(Config):
 
     CACHE_TYPE = 'null'
     ASSETS_DEBUG = True
-
 
 class TestConfig(Config):
     ENV = 'test'

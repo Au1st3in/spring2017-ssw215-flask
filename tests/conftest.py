@@ -3,7 +3,6 @@ import pytest
 from appname import create_app
 from appname.models import db, User
 
-
 @pytest.fixture()
 def testapp(request):
     app = create_app('appname.settings.TestConfig')
@@ -22,5 +21,4 @@ def testapp(request):
         db.drop_all()
 
     request.addfinalizer(teardown)
-
     return client

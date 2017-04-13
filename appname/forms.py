@@ -4,7 +4,6 @@ from wtforms import validators
 
 from .models import User
 
-
 class LoginForm(Form):
     username = TextField(u'Username', validators=[validators.required()])
     password = PasswordField(u'Password', validators=[validators.optional()])
@@ -26,5 +25,4 @@ class LoginForm(Form):
         if not user.check_password(self.password.data):
             self.username.errors.append('Invalid username or password')
             return False
-
         return True
