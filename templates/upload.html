@@ -5,71 +5,69 @@
 <!--[if gt IE 8]><!-->
 <html lang="en" class="no-js">
 <!--<![endif]-->
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Stevens Resource</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="static/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="static/css/main.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="static/css/font-awsome.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-</head>
-<body>
-  <nav class="red" role="navigation">
-    <div class="nav-wrapper container">
-      <ul class="right">
-        <li><a href="/about">About</a></li>
-        <li class="active"><a href="#">Resources</a></li>
-      </ul>
-    </div>
-  </nav>
-  <div class="container">
-    <div class="section">
-      {%if links%}
-      <div class="links" style="margin-left:0%">
-        <select class="browser-default black-text">
-          <option value="" disabled selected style="display:none;" method="post">Course Code</option>
-          {%for link in links%}
-            <option>{{link[0]}}</option>
-          {%endfor%}
-        </select>
-        <table style="width:100%;">
-          <tr>
-            <th> Class </th>
-            <th> Professor </th>
-            <th> Link </th>
-          </tr>
-          {%for link in links%}
-            <tr>
-              <td>{{link[0]}}</td>
-              <td>{{link[1]}}</td>
-              <td><a href = {{link[2]}}>{{link[3]}}</a></td>
-            </tr>
-          {%endfor%}
-        </table>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>Stevens Resource</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="static/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="static/css/main.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  </head>
+  <body>
+    <nav class="red" role="navigation">
+      <div class="nav-wrapper container">
+        <ul class="right">
+          <li><a href="/about">About</a></li>
+          <li class="active"><a href="#">Resources</a></li>
+        </ul>
       </div>
-      {%else%}
-      <div class="box">
+    </nav>
+    <div class="container">
+      <div class="section">
+        {%if links%}
+        <div class="links" style="margin-left:0%">
+          <select class="browser-default black-text">
+            <option value="" disabled selected style="display:none;" method="post">Course Code</option>
+            {%for course in courses%}
+              <option>{{course}}</option>
+            {%endfor%}
+          </select>
+          <table style="width:100%;" class="highlight">
+            <thead>
+              <tr>
+                <th> Class </th>
+                <th> Professor </th>
+                <th> Link </th>
+              </tr>
+            </thead>
+            <tbody>
+              {%for link in links%}
+              <tr>
+                <td>{{link[0]}}</td>
+                <td>{{link[1]}}</td>
+                <td><a href={{link[2]}} target="_blank" rel="noopener noreferrer">{{link[3]}}</a></td>
+              </tr>
+              {%endfor%}
+            </tbody>
+          </table>
+        </div>
+        {%else%}
+        <div class="box">
 
-        <form action="/" method="post">
-          <input type="text" name="course" id="course" placeholder="Course" required/>
-          <br>
-          <input type="text" name="professor" id="professor" placeholder="Professor" required/>
-          <br>
-          <input type="text" name="http" id="http" placeholder="http" required/>
-          <br>
-          <input type="text" name="description" id="description" placeholder="description" required/>
-          <br>
-          <input type="submit" class="button" value="Upload"/>
-        </form>
+          <form action="/" method="post">
+            <input type="text" name="course" id="course" placeholder="Course Code" required/><br>
+            <input type="text" name="professor" id="professor" placeholder="Professor" required/><br>
+            <input type="text" name="http" id="http" placeholder="https://www.stevens.edu" required/><br>
+            <input type="text" name="description" id="description" placeholder="Link Description" required/><br>
+            <input type="submit" class="waves-effect waves-light btn" value="Upload"/>
+          </form>
+        </div>
+        {%endif%}
       </div>
-      {%endif%}
+      <br><br>
     </div>
-    <br><br>
-  </div>
-
-  <script src="static/js/jquery-3.2.1.min.js"></script>
-  <script src="static/js/materialize.min.js"></script>
-  <script src="static/js/main.js"></script>
+    <script src="static/js/jquery-3.2.1.min.js"></script>
+    <script src="static/js/materialize.min.js"></script>
+    <script src="static/js/main.js"></script>
   </body>
 </html>

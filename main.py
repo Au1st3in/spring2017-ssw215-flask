@@ -12,13 +12,13 @@ def home():
 @app.route('/', methods=['POST', 'GET'])
 def upload():
     if request.method=='POST':
-        course = request.form['course']
-        professor = request.form['professor']
-        http = request.form['http']
-        description = request.form['description']
+        course, professor, http, description = request.form['course'], request.form['professor'], request.form['http'], request.form['description']
         dbHandler.insertLink(course, professor, http, description)
-        links = dbHandler.retrieveLinks()
-        return render_template('upload.html', links=links)
+        links, courses = dbHandler.retrieveLinks(), []
+        for course in links:
+            courses.append(course[0])
+        courses = sorted(list(set(courses)))
+        return render_template('upload.html', links=links, courses=courses)
     else:
         return render_template('upload.html')
 

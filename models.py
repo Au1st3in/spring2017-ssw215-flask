@@ -6,7 +6,7 @@ def insertLink(course, professor, http, description):
     try:
         request = requests.get(str(http))
         if request.status_code == 200:
-            cur.execute("INSERT INTO links (course, professor, http, description) VALUES (?,?,?,?)", ((re.sub(r'\W+', '', course)), professor, http, description))
+            cur.execute("INSERT INTO links (course, professor, http, description) VALUES (?,?,?,?)", (((re.sub(r'\W+', '', course)).upper()), (professor.title()), http, (description.title())))
             con.commit()
     except:
         pass
