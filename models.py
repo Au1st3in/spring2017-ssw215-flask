@@ -1,5 +1,8 @@
 import sqlite3, re, requests
 
+#import sys
+#from termcolor import colored
+
 def insertLink(course, professor, http, description):
     con = sqlite3.connect("database.db")
     cur = con.cursor()
@@ -19,3 +22,14 @@ def retrieveLinks():
 	links = cur.fetchall()
 	con.close()
 	return links
+
+def queryLinks(query):
+    fullLinks, links = retrieveLinks(), []
+    #print(colored(fullLinks, 'green'), file=sys.stderr)
+    for course in fullLinks:
+        #print(colored(course, 'blue'), file=sys.stderr)
+        if str(course[0]) == str(query):
+            #print(colored(len(links), 'blue'), file=sys.stderr)
+            links.append(tuple(course))
+    #print(colored(links, 'yellow'), file=sys.stderr)
+    return (fullLinks, links)
