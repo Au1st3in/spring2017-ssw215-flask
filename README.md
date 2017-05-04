@@ -2,6 +2,7 @@
 
 ![](https://raw.githubusercontent.com/Au1st3in/spring2017-ssw215-flask/master/screenshot-upload.png)
 ![](https://raw.githubusercontent.com/Au1st3in/spring2017-ssw215-flask/master/screenshot-resources.png)
+Responsive View of Upload/Resources Pages
 
 ## Group
 * Austin Rocha (https://github.com/Au1st3in)
